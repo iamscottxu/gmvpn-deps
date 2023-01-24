@@ -1,0 +1,13 @@
+﻿diff --git a/ssl/ssl_lib.c b/ssl/ssl_lib.c
+index 3ea0c059..d7573bae 100644
+--- a/ssl/ssl_lib.c
++++ b/ssl/ssl_lib.c
+@@ -2992,7 +2992,7 @@ int SSL_export_keying_material(SSL *s, unsigned char *out, size_t olen,
+                                const unsigned char *context, size_t contextlen,
+                                int use_context)
+ {
+-    if (s->version < TLS1_VERSION && s->version != DTLS1_BAD_VER)
++    if (s->version < TLS1_VERSION && s->version != DTLS1_BAD_VER && s->version != NTLS_VERSION)
+         return -1;
+ 
+     return s->method->ssl3_enc->export_keying_material(s, out, olen, label,
